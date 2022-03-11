@@ -1,0 +1,56 @@
+
+
+
+<div id="section">
+
+
+    <button type="button" class="addUser">+ Add User</button>
+
+	
+</div>
+<div class="cont">
+	
+	<div class="col">
+		<div ngbDropdown class="d-inline-block">
+		  <button  class="sort" id="dropdownBasic1" ngbDropdownToggle>Sort</button>
+		  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+			<button ngbDropdownItem  (click)="AtoZSort()">A to Z</button>
+			<button ngbDropdownItem (click)="  ZtoASort()">Z to A</button>
+		  </div>
+		</div>
+	  </div>
+	
+<table>
+	<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>Email</th>
+    <th>Role</th>
+	<th>status</th>
+    <th>Action</th>
+	</tr>
+	<tr *ngFor="let user of collection | paginate: { itemsPerPage: 5, currentPage: p,
+	
+		totalItems:totalLength 
+	
+	} |sortBy:'{{whichsort}}'">
+	<td>{{user.id}}</td>
+	<td>{{user.firstname}}</td>
+	<td>{{user.email}}</td>
+    <td>{{user.role}}</td>
+	<td>{{user.status}}</td>
+    <td> <a routerLink="/edit-user-compnent/{{user.id}}"><button id="edit">edit</button></a>
+		<button id="delete" (click)="deleteUser(user.id)">Delete</button>
+</td>
+	<tr>
+</table>
+</div>
+
+<div class="paginate">
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<script>
+	
+
+</script>
